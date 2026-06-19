@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เกี๊ยวยัดไส้ · Delicious Stuffed Dumplings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f;
+    --surface: rgba(255,255,255,0.05);
+    --surface2: rgba(255,255,255,0.08);
+    --border: rgba(255,255,255,0.1);
+    --text: #f2f2f7;
+    --subtext: rgba(242,242,247,0.6);
+    --accent: #ff9f43;
+    --accent2: #ff6b35;
+    --accent3: #ffd32a;
+    --green: #30d158;
+    --blue: #0a84ff;
+    --red: #ff453a;
+    --card-radius: 20px;
+    --font: 'Noto Sans Thai', -apple-system, sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font);
+    overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 16px 32px;
+    display: flex; align-items: center; justify-content: space-between;
+    background: rgba(10,10,15,0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-size: 1.1rem; font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .nav-links { display: flex; gap: 28px; }
+  .nav-links a {
+    color: var(--subtext); text-decoration: none; font-size: 0.88rem;
+    font-weight: 500; transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ── SECTIONS ── */
+  section { padding: 100px 0; }
+  .container { max-width: 1060px; margin: 0 auto; padding: 0 28px; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center;
+    position: relative; overflow: hidden;
+    padding-top: 80px;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 70% 60% at 60% 40%, rgba(255,159,67,0.15) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 40% at 20% 70%, rgba(255,107,53,0.1) 0%, transparent 60%);
+  }
+  .hero-grain {
+    position: absolute; inset: 0; opacity: .03;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+    background-size: 200px;
+  }
+  .hero-content { position: relative; z-index: 1; }
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,159,67,0.12);
+    border: 1px solid rgba(255,159,67,0.25);
+    border-radius: 100px;
+    padding: 6px 16px;
+    font-size: 0.8rem; font-weight: 600;
+    color: var(--accent);
+    margin-bottom: 28px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp .6s .2s forwards;
+  }
+  .hero-eyebrow span { width: 6px; height: 6px; background: var(--accent); border-radius: 50%; }
+  h1.hero-title {
+    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-weight: 700; line-height: 1.05;
+    letter-spacing: -0.03em;
+    opacity: 0; transform: translateY(30px);
+    animation: fadeUp .7s .35s forwards;
+  }
+  h1.hero-title .line2 {
+    display: block;
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 50%, var(--accent3) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .hero-sub {
+    margin-top: 20px;
+    font-size: 1.1rem; color: var(--subtext);
+    max-width: 480px; font-weight: 400;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp .6s .5s forwards;
+  }
+  .hero-badges {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    margin-top: 36px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp .6s .65s forwards;
+  }
+  .badge {
+    display: flex; align-items: center; gap: 6px;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 8px 16px; font-size: 0.82rem; font-weight: 500;
+  }
+  .badge .dot { width: 8px; height: 8px; border-radius: 50%; }
+  .badge.green .dot { background: var(--green); box-shadow: 0 0 8px var(--green); }
+  .badge.blue .dot { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+  .badge.orange .dot { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+  .hero-visual {
+    position: absolute; right: -40px; top: 50%;
+    transform: translateY(-50%);
+    width: 420px; height: 420px;
+    opacity: 0; animation: fadeIn 1s .8s forwards;
+  }
+  .hero-orb {
+    width: 420px; height: 420px; border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,211,42,0.3), rgba(255,159,67,0.2) 40%, rgba(255,107,53,0.05) 70%, transparent);
+    filter: blur(1px);
+    animation: float 6s ease-in-out infinite;
+  }
+  .hero-orb::after {
+    content: '🥟';
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    font-size: 120px;
+    filter: drop-shadow(0 20px 40px rgba(255,159,67,0.4));
+  }
+
+  /* ── SECTION HEADER ── */
+  .sec-label {
+    font-size: 0.75rem; font-weight: 700; letter-spacing: .15em;
+    text-transform: uppercase; color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .sec-title {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    font-weight: 700; letter-spacing: -0.02em;
+    line-height: 1.15;
+  }
+  .sec-sub { margin-top: 12px; color: var(--subtext); max-width: 520px; font-size: 1rem; }
+
+  /* ── CARD ── */
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--card-radius);
+    padding: 28px;
+    transition: transform .3s, border-color .3s, background .3s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(255,159,67,0.3);
+    background: var(--surface2);
+  }
+
+  /* ── INFO GRID ── */
+  .info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px; margin-top: 40px;
+  }
+  .info-card { position: relative; overflow: hidden; }
+  .info-card-icon { font-size: 2rem; margin-bottom: 14px; }
+  .info-card-label { font-size: 0.72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--subtext); margin-bottom: 4px; }
+  .info-card-value { font-size: 1.05rem; font-weight: 600; }
+  .info-card-glow {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 0% 0%, rgba(255,159,67,0.06), transparent);
+    pointer-events: none;
+  }
+
+  /* ── SWOT ── */
+  .swot-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 16px; margin-top: 40px;
+  }
+  .swot-card { border-radius: var(--card-radius); padding: 28px; border: 1px solid; }
+  .swot-card.strength { background: rgba(48,209,88,0.07); border-color: rgba(48,209,88,0.2); }
+  .swot-card.weakness { background: rgba(255,69,58,0.07); border-color: rgba(255,69,58,0.2); }
+  .swot-card.opportunity { background: rgba(10,132,255,0.07); border-color: rgba(10,132,255,0.2); }
+  .swot-card.threat { background: rgba(255,159,67,0.07); border-color: rgba(255,159,67,0.2); }
+  .swot-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+  .swot-emoji { font-size: 1.5rem; }
+  .swot-name { font-weight: 700; font-size: 1rem; }
+  .swot-tag { font-size: 0.7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; padding: 3px 10px; border-radius: 100px; }
+  .strength .swot-tag { background: rgba(48,209,88,0.2); color: var(--green); }
+  .weakness .swot-tag { background: rgba(255,69,58,0.2); color: var(--red); }
+  .opportunity .swot-tag { background: rgba(10,132,255,0.2); color: var(--blue); }
+  .threat .swot-tag { background: rgba(255,159,67,0.2); color: var(--accent); }
+  .swot-list { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+  .swot-list li { display: flex; gap: 10px; font-size: 0.9rem; color: var(--subtext); }
+  .swot-list li::before { content: '—'; opacity: .4; flex-shrink: 0; }
+
+  /* ── PRODUCTS ── */
+  .products-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px; margin-top: 40px;
+  }
+  .product-card { text-align: center; }
+  .product-emoji { font-size: 3.5rem; margin-bottom: 16px; display: block; }
+  .product-name { font-size: 1.15rem; font-weight: 700; }
+  .product-desc { font-size: 0.88rem; color: var(--subtext); margin-top: 6px; }
+  .product-price-row { display: flex; justify-content: center; gap: 16px; margin-top: 18px; }
+  .price-item { text-align: center; }
+  .price-label { font-size: 0.68rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--subtext); }
+  .price-value { font-size: 1.4rem; font-weight: 700; color: var(--accent); }
+  .price-value span { font-size: 0.8rem; font-weight: 400; color: var(--subtext); }
+
+  /* ── FINANCE ── */
+  .finance-row {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px; margin-top: 40px;
+  }
+  .stat-card { text-align: center; padding: 32px 20px; }
+  .stat-num { font-size: 2.5rem; font-weight: 700; letter-spacing: -0.03em; }
+  .stat-num.orange { color: var(--accent); }
+  .stat-num.green { color: var(--green); }
+  .stat-num.blue { color: var(--blue); }
+  .stat-label { font-size: 0.82rem; color: var(--subtext); margin-top: 4px; }
+
+  /* ── TEAM ── */
+  .team-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px; margin-top: 40px;
+  }
+  .team-card { text-align: center; padding: 28px 20px; }
+  .team-avatar {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; margin: 0 auto 14px;
+    box-shadow: 0 8px 24px rgba(255,159,67,0.3);
+  }
+  .team-name { font-size: 0.92rem; font-weight: 700; }
+  .team-role { font-size: 0.78rem; color: var(--subtext); margin-top: 4px; }
+
+  /* ── PROCESS TIMELINE ── */
+  .timeline { margin-top: 40px; display: flex; flex-direction: column; gap: 0; }
+  .timeline-item { display: flex; gap: 20px; }
+  .timeline-left { display: flex; flex-direction: column; align-items: center; }
+  .timeline-dot {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700; flex-shrink: 0;
+    box-shadow: 0 0 20px rgba(255,159,67,0.3);
+  }
+  .timeline-line { flex: 1; width: 2px; background: var(--border); margin: 4px 0; min-height: 32px; }
+  .timeline-item:last-child .timeline-line { display: none; }
+  .timeline-content { padding: 8px 0 32px; }
+  .timeline-title { font-weight: 700; font-size: 0.95rem; }
+  .timeline-desc { font-size: 0.85rem; color: var(--subtext); margin-top: 4px; }
+
+  /* ── MARKETING ── */
+  .mktg-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px; margin-top: 40px;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 48px 0 36px;
+    text-align: center;
+  }
+  .footer-logo { font-size: 1.6rem; font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+  .footer-sub { font-size: 0.82rem; color: var(--subtext); }
+  .footer-meta { margin-top: 32px; font-size: 0.75rem; color: rgba(242,242,247,0.3); }
+
+  /* ── DIVIDER ── */
+  .divider { border: none; border-top: 1px solid var(--border); margin: 0; }
+
+  /* ── SCROLL REVEAL ── */
+  .reveal { opacity: 0; transform: translateY(32px); transition: opacity .65s cubic-bezier(.22,1,.36,1), transform .65s cubic-bezier(.22,1,.36,1); }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+  .reveal-delay-4 { transition-delay: .4s; }
+
+  /* ── KEYFRAMES ── */
+  @keyframes fadeUp { to { opacity: 1; transform: none; } }
+  @keyframes fadeIn { to { opacity: 1; } }
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-18px); }
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: .5; }
+  }
+
+  /* ── MOBILE ── */
+  @media (max-width: 768px) {
+    nav { padding: 14px 20px; }
+    .nav-links { gap: 16px; }
+    .hero-visual { display: none; }
+    h1.hero-title { font-size: 2.8rem; }
+    .swot-grid { grid-template-columns: 1fr; }
+    .hero-badges { gap: 8px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">🥟 เกี๊ยวยัดไส้</div>
+  <div class="nav-links">
+    <a href="#about">เกี่ยวกับ</a>
+    <a href="#swot">วิเคราะห์</a>
+    <a href="#products">สินค้า</a>
+    <a href="#finance">การเงิน</a>
+    <a href="#team">ทีมงาน</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grain"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-eyebrow"><span></span> แผนธุรกิจนักศึกษา ปวส. · วิทยาลัยการอาชีพสระบุรี</div>
+      <h1 class="hero-title">
+        เกี๊ยวยัดไส้
+        <span class="line2">Delicious Stuffed<br>Dumplings</span>
+      </h1>
+      <p class="hero-sub">อาหารว่างสดใหม่ ทำจากวัตถุดิบคุณภาพ ราคาย่อมเยา เข้าถึงได้ทุกกลุ่ม — หน้าร้านและเดลิเวอรี</p>
+      <div class="hero-badges">
+        <div class="badge green"><span class="dot"></span> ผลิตสดใหม่ทุกวัน</div>
+        <div class="badge blue"><span class="dot"></span> SME / Micro Business</div>
+        <div class="badge orange"><span class="dot"></span> งบลงทุน 500 บาท</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-orb"></div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">ข้อมูลกิจการ</div>
+      <h2 class="sec-title">รู้จักธุรกิจของเรา</h2>
+      <p class="sec-sub">ธุรกิจผลิตและจำหน่ายเกี๊ยวสดใหม่ ทั้งแบบหน้าร้านและเดลิเวอรี ดำเนินการโดยนักศึกษา ปวส.1 สาขาเทคโนโลยีธุรกิจดิจิทัล</p>
+    </div>
+    <div class="info-grid">
+      <div class="card info-card reveal reveal-delay-1">
+        <div class="info-card-glow"></div>
+        <div class="info-card-icon">🏫</div>
+        <div class="info-card-label">สถานที่ตั้ง</div>
+        <div class="info-card-value">วิทยาลัยการอาชีพสระบุรี</div>
+      </div>
+      <div class="card info-card reveal reveal-delay-2">
+        <div class="info-card-glow"></div>
+        <div class="info-card-icon">📦</div>
+        <div class="info-card-label">ประเภทธุรกิจ</div>
+        <div class="info-card-value">ผลิตเพื่อจำหน่าย (Food Production & Retail)</div>
+      </div>
+      <div class="card info-card reveal reveal-delay-3">
+        <div class="info-card-glow"></div>
+        <div class="info-card-icon">🎯</div>
+        <div class="info-card-label">กลุ่มเป้าหมาย</div>
+        <div class="info-card-value">อายุ 16–35 ปี · นักเรียน วัยรุ่น พนักงาน</div>
+      </div>
+      <div class="card info-card reveal reveal-delay-4">
+        <div class="info-card-glow"></div>
+        <div class="info-card-icon">💡</div>
+        <div class="info-card-label">ลักษณะธุรกิจ</div>
+        <div class="info-card-value">SME / Micro Business · เริ่มต้นเงินลงทุนน้อย</div>
+      </div>
+    </div>
+
+    <!-- Inspiration -->
+    <div class="card reveal" style="margin-top:16px; padding:36px;">
+      <div style="display:flex;gap:20px;align-items:flex-start;">
+        <div style="font-size:2.5rem;flex-shrink:0;">✨</div>
+        <div>
+          <div style="font-weight:700;font-size:1.05rem;margin-bottom:10px;">แรงบันดาลใจ</div>
+          <p style="color:var(--subtext);line-height:1.8;font-size:0.92rem;">
+            ธุรกิจนี้ไม่ได้เริ่มจากแค่ความอยากขายอาหาร แต่เกิดจากความเชื่อว่า <strong style="color:var(--text);">"อาหารเชื่อมโยงความทรงจำและผู้คน"</strong> เกี๊ยวหนึ่งคำที่ทำด้วยใจ สามารถมอบความสุขเล็กๆ ให้กับใครสักคนในวันที่เหนื่อยล้าได้ — นั่นคือสิ่งที่เราต้องการสร้าง
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- SWOT -->
+<section id="swot">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">การวิเคราะห์สถานการณ์</div>
+      <h2 class="sec-title">SWOT Analysis</h2>
+      <p class="sec-sub">วิเคราะห์จุดแข็ง จุดอ่อน โอกาส และอุปสรรค ของกิจการ</p>
+    </div>
+    <div class="swot-grid">
+      <div class="swot-card strength reveal reveal-delay-1">
+        <div class="swot-header">
+          <span class="swot-emoji">💪</span>
+          <div>
+            <div class="swot-name">จุดแข็ง</div>
+            <span class="swot-tag">Strengths</span>
+          </div>
+        </div>
+        <ul class="swot-list">
+          <li>รสชาติอร่อย กลมกล่อม ถูกปากลูกค้า</li>
+          <li>ใช้วัตถุดิบที่ดีต่อสุขภาพ ลดหรือไม่มีไขมัน</li>
+          <li>ผลิตสดใหม่ น่ารับประทาน</li>
+        </ul>
+      </div>
+      <div class="swot-card weakness reveal reveal-delay-2">
+        <div class="swot-header">
+          <span class="swot-emoji">⚠️</span>
+          <div>
+            <div class="swot-name">จุดอ่อน</div>
+            <span class="swot-tag">Weaknesses</span>
+          </div>
+        </div>
+        <ul class="swot-list">
+          <li>อายุสินค้าไม่นาน ต้องบริโภคทันที</li>
+          <li>ยังเป็นธุรกิจใหม่ ลูกค้ายังไม่รู้จักมาก</li>
+        </ul>
+      </div>
+      <div class="swot-card opportunity reveal reveal-delay-3">
+        <div class="swot-header">
+          <span class="swot-emoji">🚀</span>
+          <div>
+            <div class="swot-name">โอกาส</div>
+            <span class="swot-tag">Opportunities</span>
+          </div>
+        </div>
+        <ul class="swot-list">
+          <li>อาหารว่างประเภทเกี๊ยวเป็นที่นิยมในตลาด</li>
+          <li>ความต้องการสินค้าในสหกรณ์ยังไม่มี</li>
+          <li>ขยายช่องทางออนไลน์และเดลิเวอรีได้</li>
+          <li>เทรนด์คนรักสุขภาพทำให้สินค้าไร้ไขมันน่าสนใจ</li>
+        </ul>
+      </div>
+      <div class="swot-card threat reveal reveal-delay-4">
+        <div class="swot-header">
+          <span class="swot-emoji">🛡️</span>
+          <div>
+            <div class="swot-name">อุปสรรค</div>
+            <span class="swot-tag">Threats</span>
+          </div>
+        </div>
+        <ul class="swot-list">
+          <li>เก็บไว้หลายวันอาจมีความเหนียว</li>
+          <li>คู่แข่งมาก ตลาดแย่งลูกค้าสูง</li>
+          <li>ต้องควบคุมคุณภาพวัตถุดิบสดตลอด</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PRODUCTS -->
+<section id="products">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">สินค้าและราคา</div>
+      <h2 class="sec-title">เมนูของเรา</h2>
+      <p class="sec-sub">เกี๊ยวสดใหม่ หลากหลายไส้ ราคาย่อมเยา เข้าถึงได้ทุกกลุ่มลูกค้า</p>
+    </div>
+    <div class="products-grid">
+      <div class="card product-card reveal reveal-delay-1">
+        <span class="product-emoji">🐷</span>
+        <div class="product-name">เกี๊ยวยัดไส้หมู</div>
+        <div class="product-desc">เนื้อหมูสดคัดคุณภาพ ปรุงรสกลมกล่อม ไส้แน่น</div>
+        <div class="product-price-row">
+          <div class="price-item">
+            <div class="price-label">ต้นทุน</div>
+            <div class="price-value">250 <span>บาท/ล็อต</span></div>
+          </div>
+          <div style="width:1px;background:var(--border);"></div>
+          <div class="price-item">
+            <div class="price-label">ราคาขาย</div>
+            <div class="price-value" style="color:var(--green);">10 <span>บาท/ชิ้น</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card product-card reveal reveal-delay-2">
+        <span class="product-emoji">🦐</span>
+        <div class="product-name">เกี๊ยวยัดไส้กุ้ง</div>
+        <div class="product-desc">กุ้งสดแท้ 100% เนื้อหวานกรุบ เด้งทุกคำ</div>
+        <div class="product-price-row">
+          <div class="price-item">
+            <div class="price-label">ต้นทุน</div>
+            <div class="price-value">250 <span>บาท/ล็อต</span></div>
+          </div>
+          <div style="width:1px;background:var(--border);"></div>
+          <div class="price-item">
+            <div class="price-label">ราคาขาย</div>
+            <div class="price-value" style="color:var(--green);">10 <span>บาท/ชิ้น</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="card product-card reveal reveal-delay-3">
+        <span class="product-emoji">🌟</span>
+        <div class="product-name">ไส้พิเศษตามเมนู</div>
+        <div class="product-desc">ไส้พิเศษตามฤดูกาล รับออเดอร์ล่วงหน้าได้</div>
+        <div class="product-price-row">
+          <div class="price-item">
+            <div class="price-label">ราคาเริ่มต้น</div>
+            <div class="price-value" style="color:var(--accent);">15–20 <span>บาท</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channels -->
+    <div style="margin-top:16px;" class="reveal">
+      <div class="card" style="padding:28px 32px;">
+        <div style="font-weight:700;margin-bottom:18px;font-size:1rem;">📡 ช่องทางจำหน่าย</div>
+        <div style="display:flex;flex-wrap:wrap;gap:12px;">
+          <div class="badge orange" style="padding:10px 18px;border-radius:14px;background:rgba(255,159,67,0.1);border-color:rgba(255,159,67,0.25);">🏪 หน้าร้านในวิทยาลัย</div>
+          <div class="badge blue" style="padding:10px 18px;border-radius:14px;background:rgba(10,132,255,0.1);border-color:rgba(10,132,255,0.25);">🛵 เดลิเวอรีออนไลน์</div>
+          <div class="badge green" style="padding:10px 18px;border-radius:14px;background:rgba(48,209,88,0.1);border-color:rgba(48,209,88,0.25);">📱 รับออเดอร์ล่วงหน้า</div>
+          <div class="badge" style="padding:10px 18px;border-radius:14px;">📘 Facebook Page</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">กระบวนการผลิต</div>
+      <h2 class="sec-title">ขั้นตอนการผลิต</h2>
+      <p class="sec-sub">คัดสรรทุกขั้นตอนด้วยความใส่ใจ เพื่อความอร่อยและสะอาดปลอดภัย</p>
+    </div>
+    <div class="timeline reveal" style="margin-top:40px;max-width:600px;">
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title">จัดซื้อวัตถุดิบคุณภาพ</div>
+          <div class="timeline-desc">ซื้อสดจากตลาด · ชำระเงินสด 100%</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title">เตรียมวัตถุดิบ</div>
+          <div class="timeline-desc">ล้าง ลอกไขมัน ทำความสะอาดเนื้อสัตว์</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title">ปรุงรสและเตรียมไส้</div>
+          <div class="timeline-desc">ผสมเครื่องปรุงสูตรเฉพาะ ให้ได้รสชาติกลมกล่อม</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title">ห่อเกี๊ยวและจัดรูปทรง</div>
+          <div class="timeline-desc">ห่ออย่างพิถีพิถัน สวยงาม มาตรฐาน</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-line"></div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title">ปรุงสุกตามเมนู</div>
+          <div class="timeline-desc">ต้ม / นึ่ง / ทอด ตามความต้องการลูกค้า</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left">
+          <div class="timeline-dot">6</div>
+        </div>
+        <div class="timeline-content">
+          <div class="timeline-title">จัดเตรียมและบรรจุจำหน่าย</div>
+          <div class="timeline-desc">บรรจุสะอาด พร้อมส่งมอบให้ลูกค้าทันที</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- FINANCE -->
+<section id="finance">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">แผนการเงิน</div>
+      <h2 class="sec-title">ภาพรวมทางการเงิน</h2>
+      <p class="sec-sub">เริ่มต้นธุรกิจด้วยเงินลงทุนน้อย โอกาสขยายตัวในอนาคตสูง</p>
+    </div>
+    <div class="finance-row">
+      <div class="card stat-card reveal reveal-delay-1">
+        <div class="stat-num orange">500</div>
+        <div class="stat-label">บาท · เงินทุนเริ่มต้น</div>
+      </div>
+      <div class="card stat-card reveal reveal-delay-2">
+        <div class="stat-num green">700</div>
+        <div class="stat-label">บาท/เดือน · เป้ายอดขาย</div>
+      </div>
+      <div class="card stat-card reveal reveal-delay-3">
+        <div class="stat-num blue">250</div>
+        <div class="stat-label">บาท · เงินทุนหมุนเวียน</div>
+      </div>
+      <div class="card stat-card reveal reveal-delay-4">
+        <div class="stat-num" style="color:var(--accent3);">200</div>
+        <div class="stat-label">บาท · เครื่องมืออุปกรณ์</div>
+      </div>
+    </div>
+    <div class="card reveal" style="margin-top:16px;padding:28px 32px;">
+      <div style="font-weight:700;margin-bottom:14px;">💳 วิธีชำระ</div>
+      <div style="display:flex;gap:24px;flex-wrap:wrap;">
+        <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;">
+          <span style="font-size:1.4rem;">💵</span>
+          <div><div style="font-weight:600;">ขายสด 100%</div><div style="color:var(--subtext);font-size:0.8rem;">ไม่มีการขายเชื่อ</div></div>
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;font-size:0.9rem;">
+          <span style="font-size:1.4rem;">🛒</span>
+          <div><div style="font-weight:600;">ซื้อวัตถุดิบเงินสด</div><div style="color:var(--subtext);font-size:0.8rem;">ตลาดสดร้านไก่</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- MARKETING -->
+<section id="marketing">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">กลยุทธ์การตลาด</div>
+      <h2 class="sec-title">การส่งเสริมการขาย</h2>
+      <p class="sec-sub">ใช้ช่องทางออนไลน์เป็นหลัก พร้อมโปรโมชั่นดึงดูดลูกค้าใหม่</p>
+    </div>
+    <div class="mktg-grid">
+      <div class="card reveal reveal-delay-1">
+        <div style="font-size:2rem;margin-bottom:12px;">📘</div>
+        <div style="font-weight:700;margin-bottom:6px;">Facebook Page</div>
+        <div style="color:var(--subtext);font-size:0.88rem;">ประชาสัมพันธ์สินค้า โปรโมชั่น และความเคลื่อนไหวของร้านอย่างต่อเนื่อง</div>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div style="font-size:2rem;margin-bottom:12px;">🎁</div>
+        <div style="font-weight:700;margin-bottom:6px;">โปรโมชั่นเปิดตัว</div>
+        <div style="color:var(--subtext);font-size:0.88rem;">ลดราคาช่วงเปิดร้าน · ซื้อ 2 แถม 1 · แจกตัวอย่างสินค้า</div>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <div style="font-size:2rem;margin-bottom:12px;">🛵</div>
+        <div style="font-weight:700;margin-bottom:6px;">เดลิเวอรีออนไลน์</div>
+        <div style="color:var(--subtext);font-size:0.88rem;">รับออเดอร์และส่งตรงถึงมือลูกค้า สะดวกรวดเร็ว</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- TEAM -->
+<section id="team">
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">ทีมงาน</div>
+      <h2 class="sec-title">ผู้ร่วมประกอบธุรกิจ</h2>
+      <p class="sec-sub">นักศึกษา ปวส.1 เทคโนโลยีธุรกิจดิจิทัล สาขางานอุตสาหกรรม</p>
+    </div>
+    <div class="team-grid">
+      <div class="card team-card reveal reveal-delay-1">
+        <div class="team-avatar">👑</div>
+        <div class="team-name">นาย กฤษณะ มะณีกลัด</div>
+        <div class="team-role">เจ้าของธุรกิจ / หัวหน้าทีม</div>
+      </div>
+      <div class="card team-card reveal reveal-delay-2">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--blue),#5ac8fa);">🔧</div>
+        <div class="team-name">นาย พีรกร กฤชพรรษ</div>
+        <div class="team-role">ฝ่ายให้บริการ</div>
+      </div>
+      <div class="card team-card reveal reveal-delay-3">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--blue),#5ac8fa);">⚙️</div>
+        <div class="team-name">นาย นพดล กสิวัฒน์</div>
+        <div class="team-role">ฝ่ายให้บริการ</div>
+      </div>
+      <div class="card team-card reveal reveal-delay-4">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--green),#30d158);">📊</div>
+        <div class="team-name">น.ส. ขัตติญา ศรีเหลา</div>
+        <div class="team-role">ฝ่ายบัญชีและการเงิน</div>
+      </div>
+      <div class="card team-card reveal">
+        <div class="team-avatar" style="background:linear-gradient(135deg,var(--green),#30d158);">📋</div>
+        <div class="team-name">น.ส. ศรัญญา พรมหนู</div>
+        <div class="team-role">ฝ่ายบัญชีและการเงิน</div>
+      </div>
+    </div>
+    <div class="card reveal" style="margin-top:16px;padding:24px 28px;">
+      <div style="display:flex;align-items:center;gap:16px;">
+        <div style="font-size:1.8rem;">👩‍🏫</div>
+        <div>
+          <div style="font-size:0.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--subtext);margin-bottom:2px;">ครูที่ปรึกษา</div>
+          <div style="font-weight:700;">ครูนาตยา วงษ์กต</div>
+          <div style="color:var(--subtext);font-size:0.82rem;">ครูประจำแผนกวิชา เทคโนโลยีธุรกิจดิจิทัล</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-logo">🥟 เกี๊ยวยัดไส้</div>
+    <div class="footer-sub">Delicious Stuffed Dumplings · วิทยาลัยการอาชีพสระบุรี</div>
+    <div class="footer-meta">แผนธุรกิจจัดทำโดยนักศึกษา ปวส.1 · สาขาเทคโนโลยีธุรกิจดิจิทัล · ครูที่ปรึกษา ครูนาตยา วงษ์กต</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Nav active link highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 120) current = s.id;
+    });
+    navLinks.forEach(a => {
+      a.style.color = a.getAttribute('href') === `#${current}` ? 'var(--text)' : '';
+    });
+  });
+</script>
+</body>
+</html>
