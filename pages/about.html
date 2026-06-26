@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เกี่ยวกับธุรกิจ · เกี๊ยวยัดไส้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+.page-hero-bg{
+  background:
+    radial-gradient(ellipse 80% 80% at 70% 20%,rgba(255,159,67,.18) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 50% at 5% 90%,rgba(255,211,42,.08) 0%,transparent 55%);
+}
+/* info chips */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;margin-top:36px;}
+.info-chip{
+  background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;
+  transition:transform .3s cubic-bezier(.22,1,.36,1),border-color .3s;
+}
+.info-chip:hover{transform:translateY(-4px);border-color:rgba(255,159,67,.3);}
+.chip-icon{font-size:1.8rem;margin-bottom:12px;}
+.chip-label{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--subtext);margin-bottom:4px;}
+.chip-value{font-size:.95rem;font-weight:700;}
+
+/* story block */
+.story-block{
+  background:var(--surface);border:1px solid var(--border);border-radius:24px;
+  padding:40px;margin-top:20px;
+  position:relative;overflow:hidden;
+}
+.story-block::before{
+  content:'';position:absolute;top:0;left:0;width:4px;height:100%;
+  background:linear-gradient(to bottom,var(--accent3),var(--accent),var(--accent2));
+  border-radius:4px 0 0 4px;
+}
+.story-block p{color:var(--subtext);line-height:1.85;font-size:.95rem;}
+.story-block p+p{margin-top:14px;}
+.story-block strong{color:var(--text);font-weight:700;}
+
+/* objectives */
+.obj-list{display:flex;flex-direction:column;gap:12px;margin-top:28px;}
+.obj-item{
+  display:flex;gap:16px;align-items:flex-start;
+  background:var(--surface);border:1px solid var(--border);border-radius:16px;
+  padding:18px 20px;transition:transform .25s,border-color .25s;
+}
+.obj-item:hover{transform:translateX(6px);border-color:rgba(255,159,67,.25);}
+.obj-num{
+  width:36px;height:36px;border-radius:50%;flex-shrink:0;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;font-weight:800;color:#fff;
+}
+.obj-text{font-size:.9rem;color:var(--subtext);padding-top:8px;line-height:1.6;}
+
+/* marquee in about */
+.img-marquee{overflow:hidden;padding:48px 0;}
+.img-track{display:flex;gap:14px;width:max-content;}
+.img-track.f{animation:marquee 26s linear infinite;}
+.img-card{
+  width:240px;height:160px;border-radius:16px;flex-shrink:0;overflow:hidden;
+  background:var(--surface2);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:2.5rem;
+  position:relative;
+}
+.img-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">🥟 เกี๊ยวยัดไส้</a>
+  <div class="nav-links">
+    <a href="../index.html">หน้าหลัก</a>
+    <a href="about.html" class="active">เกี่ยวกับ</a>
+    <a href="menu.html">เมนู</a>
+    <a href="team.html">ทีมงาน</a>
+    <a href="swot.html">วิเคราะห์</a>
+    <a href="finance.html">การเงิน</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow"><i></i> About</div>
+    <h1 class="page-title">เกี่ยวกับ<br><span class="grad">ธุรกิจของเรา</span></h1>
+    <p class="page-sub">ประวัติ แรงบันดาลใจ และวัตถุประสงค์ของกิจการ "เกี๊ยวยัดไส้ (Delicious Stuffed Dumplings)"</p>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- MARQUEE -->
+<div class="img-marquee">
+  <div class="img-track f">
+    <div class="img-card"><img src="../assets/gallery/about1.jpg" onerror="this.style.display='none'">🥟</div>
+    <div class="img-card"><img src="../assets/gallery/about2.jpg" onerror="this.style.display='none'">🏫</div>
+    <div class="img-card"><img src="../assets/gallery/about3.jpg" onerror="this.style.display='none'">🐷</div>
+    <div class="img-card"><img src="../assets/gallery/about4.jpg" onerror="this.style.display='none'">🦐</div>
+    <div class="img-card"><img src="../assets/gallery/about5.jpg" onerror="this.style.display='none'">🍜</div>
+    <div class="img-card"><img src="../assets/gallery/about6.jpg" onerror="this.style.display='none'">📦</div>
+    <!-- ซ้ำ -->
+    <div class="img-card"><img src="../assets/gallery/about1.jpg" onerror="this.style.display='none'">🥟</div>
+    <div class="img-card"><img src="../assets/gallery/about2.jpg" onerror="this.style.display='none'">🏫</div>
+    <div class="img-card"><img src="../assets/gallery/about3.jpg" onerror="this.style.display='none'">🐷</div>
+    <div class="img-card"><img src="../assets/gallery/about4.jpg" onerror="this.style.display='none'">🦐</div>
+    <div class="img-card"><img src="../assets/gallery/about5.jpg" onerror="this.style.display='none'">🍜</div>
+    <div class="img-card"><img src="../assets/gallery/about6.jpg" onerror="this.style.display='none'">📦</div>
+  </div>
+</div>
+
+<!-- BASIC INFO -->
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">ข้อมูลพื้นฐาน</div><h2 class="sec-title">ข้อมูลกิจการ</h2></div>
+    <div class="info-grid">
+      <div class="info-chip reveal d1"><div class="chip-icon">🏪</div><div class="chip-label">ชื่อกิจการ</div><div class="chip-value">เกี๊ยวยัดไส้ (Delicious Stuffed Dumplings)</div></div>
+      <div class="info-chip reveal d2"><div class="chip-icon">👤</div><div class="chip-label">เจ้าของหลัก</div><div class="chip-value">นาย กฤษณะ มะณีกลัด</div></div>
+      <div class="info-chip reveal d3"><div class="chip-icon">🏫</div><div class="chip-label">สถานที่ตั้ง</div><div class="chip-value">วิทยาลัยการอาชีพสระบุรี</div></div>
+      <div class="info-chip reveal d4"><div class="chip-icon">📦</div><div class="chip-label">ประเภทธุรกิจ</div><div class="chip-value">ผลิตเพื่อจำหน่าย · SME / Micro Business</div></div>
+      <div class="info-chip reveal d1"><div class="chip-icon">🎓</div><div class="chip-label">ชั้น / สาขาวิชา</div><div class="chip-value">ปวส.1 เทคโนโลยีธุรกิจดิจิทัล สาขางานอุตสาหกรรม</div></div>
+      <div class="info-chip reveal d2"><div class="chip-icon">🎯</div><div class="chip-label">กลุ่มเป้าหมาย</div><div class="chip-value">อายุ 16–35 ปี · นักเรียน วัยรุ่น พนักงาน</div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- INSPIRATION -->
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">แรงบันดาลใจ</div><h2 class="sec-title">ทำไมถึงเลือกเกี๊ยว?</h2></div>
+    <div class="story-block reveal" style="margin-top:28px;">
+      <p>ธุรกิจ "เกี๊ยวยัดไส้" ไม่ได้เริ่มต้นจากแค่ความคิดอยากขายอาหาร แต่เกิดจากความรู้สึกเล็กๆ ในชีวิตประจำวัน — <strong>ความอบอุ่นจากกลิ่นอาหารที่คุ้นเคย</strong> และความสุขเรียบง่ายจากการได้กินของอร่อยในช่วงเวลาธรรมดา</p>
+      <p>ผู้จัดทำเชื่อว่า "อาหาร" ไม่ใช่เพียงสิ่งที่ทำให้อิ่มท้อง แต่เป็นสิ่งที่ <strong>เชื่อมโยงความทรงจำ ความรู้สึก และผู้คนเข้าด้วยกัน</strong> เกี๊ยวหนึ่งคำอาจดูธรรมดา แต่ถ้าทำด้วยความตั้งใจ มันสามารถกลายเป็นความสุขเล็กๆ ให้ใครบางคนในวันที่เหนื่อยล้าได้</p>
+      <p>แรงบันดาลใจของธุรกิจนี้เกิดจาก<strong>ความตั้งใจที่จะสร้างสิ่งเล็กๆ ที่มีคุณค่าในสังคม</strong> ไม่ใช่เพียงเพื่อรายได้ แต่เพื่อส่งต่อความใส่ใจผ่านอาหารทุกชิ้นที่ถูกผลิตขึ้นอย่างพิถีพิถัน ตั้งแต่การเลือกวัตถุดิบ ความสะอาด ไปจนถึงรสชาติที่ต้อง "ทำให้คนกินรู้สึกดี"</p>
+      <p style="margin-top:20px;font-style:italic;color:var(--accent);">"เกี๊ยวยัดไส้จึงไม่ใช่แค่ชื่อธุรกิจ แต่คือความพยายามที่จะเปลี่ยน 'ของธรรมดา' ให้กลายเป็น 'ความทรงจำที่อร่อยและมีความหมาย' สำหรับทุกคนที่ได้ลิ้มลอง"</p>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- OBJECTIVES -->
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">วัตถุประสงค์</div><h2 class="sec-title">เป้าหมายของเรา</h2></div>
+    <div class="obj-list reveal">
+      <div class="obj-item"><div class="obj-num">1</div><div class="obj-text">ฝึกประสบการณ์การเป็นผู้ประกอบการรุ่นใหม่ ก้าวแรกสู่ความเป็นเจ้าของธุรกิจ</div></div>
+      <div class="obj-item"><div class="obj-num">2</div><div class="obj-text">ส่งเสริมการหารายได้ระหว่างเรียน เพื่อความมั่นคงทางการเงินของนักศึกษา</div></div>
+      <div class="obj-item"><div class="obj-num">3</div><div class="obj-text">จำหน่ายสินค้าที่มีเอกลักษณ์เป็นของตัวเอง ราคาย่อมเยา เข้าถึงได้ทุกคน</div></div>
+      <div class="obj-item"><div class="obj-num">4</div><div class="obj-text">ใช้เวลาว่างให้เกิดประโยชน์ พัฒนาทักษะและเรียนรู้จากประสบการณ์จริง</div></div>
+      <div class="obj-item"><div class="obj-num">5</div><div class="obj-text">เรียนรู้การคิดสร้างสรรค์ นำความรู้ไปต่อยอดอย่างมีประสิทธิภาพในอนาคต</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-logo">🥟 เกี๊ยวยัดไส้</div>
+    <div class="foot-sub">Delicious Stuffed Dumplings · วิทยาลัยการอาชีพสระบุรี</div>
+    <div class="foot-nav">
+      <a href="../index.html">หน้าหลัก</a><a href="about.html">เกี่ยวกับ</a><a href="menu.html">เมนู</a>
+      <a href="team.html">ทีมงาน</a><a href="swot.html">SWOT</a><a href="finance.html">การเงิน</a><a href="process.html">การผลิต</a>
+    </div>
+    <div class="foot-copy">แผนธุรกิจนักศึกษา ปวส.1 · สาขาเทคโนโลยีธุรกิจดิจิทัล · ครูที่ปรึกษา ครูนาตยา วงษ์กต</div>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
