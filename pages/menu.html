@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>เมนู · เกี๊ยวยัดไส้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+.page-hero-bg{background:radial-gradient(ellipse 80% 70% at 60% 10%,rgba(48,209,88,.14) 0%,transparent 60%),radial-gradient(ellipse 50% 60% at 10% 80%,rgba(255,159,67,.1) 0%,transparent 55%);}
+
+/* MENU MARQUEE */
+.menu-marquee{overflow:hidden;padding:40px 0;}
+.menu-track{display:flex;gap:14px;width:max-content;animation:marquee 22s linear infinite;}
+.menu-thumb{width:200px;height:200px;border-radius:18px;flex-shrink:0;overflow:hidden;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:3rem;position:relative;}
+.menu-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+
+/* MENU CARDS */
+.menu-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;margin-top:40px;}
+.menu-card{background:var(--surface);border:1px solid var(--border);border-radius:24px;overflow:hidden;transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;}
+.menu-card:hover{transform:translateY(-6px);border-color:rgba(48,209,88,.25);box-shadow:0 20px 50px rgba(0,0,0,.35);}
+.menu-img{height:200px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
+.menu-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.menu-body{padding:22px 24px 26px;}
+.menu-name{font-size:1.15rem;font-weight:800;letter-spacing:-.02em;}
+.menu-desc{font-size:.85rem;color:var(--subtext);margin-top:6px;line-height:1.6;}
+.menu-price-row{display:flex;gap:20px;margin-top:18px;align-items:flex-end;}
+.price-block .plabel{font-size:.65rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--subtext);}
+.price-block .pval{font-size:1.6rem;font-weight:800;letter-spacing:-.04em;}
+.price-block .punit{font-size:.75rem;color:var(--subtext);}
+.price-sep{width:1px;height:36px;background:var(--border);}
+.menu-tag{display:inline-flex;align-items:center;gap:5px;padding:4px 11px;border-radius:100px;font-size:.68rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-top:14px;}
+.tag-fresh{background:rgba(48,209,88,.15);color:var(--green);border:1px solid rgba(48,209,88,.25);}
+.tag-popular{background:rgba(255,159,67,.15);color:var(--accent);border:1px solid rgba(255,159,67,.25);}
+.tag-special{background:rgba(94,92,230,.15);color:#ac8cf7;border:1px solid rgba(94,92,230,.25);}
+
+/* CHANNELS */
+.channel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:32px;}
+.channel-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:22px;display:flex;gap:14px;align-items:flex-start;transition:transform .25s,border-color .25s;}
+.channel-card:hover{transform:translateY(-3px);border-color:rgba(255,159,67,.25);}
+.ch-icon{font-size:1.8rem;flex-shrink:0;}
+.ch-name{font-weight:800;font-size:.95rem;}
+.ch-desc{font-size:.8rem;color:var(--subtext);margin-top:3px;}
+
+/* MARKETING */
+.mktg-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;margin-top:32px;}
+.mktg-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:24px;}
+.mktg-icon{font-size:2rem;margin-bottom:10px;}
+.mktg-name{font-weight:800;font-size:.95rem;}
+.mktg-desc{font-size:.82rem;color:var(--subtext);margin-top:6px;line-height:1.6;}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html">🥟 เกี๊ยวยัดไส้</a>
+  <div class="nav-links">
+    <a href="../index.html">หน้าหลัก</a><a href="about.html">เกี่ยวกับ</a>
+    <a href="menu.html" class="active">เมนู</a><a href="team.html">ทีมงาน</a>
+    <a href="swot.html">วิเคราะห์</a><a href="finance.html">การเงิน</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow"><i></i> Menu & Products</div>
+    <h1 class="page-title">สินค้า<br><span class="grad">และราคา</span></h1>
+    <p class="page-sub">เกี๊ยวสดใหม่ หลากหลายไส้ ผลิตทุกวัน ราคาย่อมเยา เข้าถึงได้ทุกกลุ่มลูกค้า</p>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- MARQUEE -->
+<div class="menu-marquee">
+  <div class="menu-track">
+    <div class="menu-thumb"><img src="../assets/gallery/menu1.jpg" onerror="this.style.display='none'">🥟</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu2.jpg" onerror="this.style.display='none'">🐷</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu3.jpg" onerror="this.style.display='none'">🦐</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu4.jpg" onerror="this.style.display='none'">🌟</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu5.jpg" onerror="this.style.display='none'">🔥</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu6.jpg" onerror="this.style.display='none'">😋</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu1.jpg" onerror="this.style.display='none'">🥟</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu2.jpg" onerror="this.style.display='none'">🐷</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu3.jpg" onerror="this.style.display='none'">🦐</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu4.jpg" onerror="this.style.display='none'">🌟</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu5.jpg" onerror="this.style.display='none'">🔥</div>
+    <div class="menu-thumb"><img src="../assets/gallery/menu6.jpg" onerror="this.style.display='none'">😋</div>
+  </div>
+</div>
+
+<!-- MENU -->
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">เมนูสินค้า</div><h2 class="sec-title">เลือกไส้ที่ชอบ</h2><p class="sec-sub">ทุกเมนูผลิตสดใหม่ คัดวัตถุดิบคุณภาพ ปรุงรสกลมกล่อม</p></div>
+    <div class="menu-grid">
+      <div class="menu-card reveal d1">
+        <div class="menu-img" style="background:linear-gradient(135deg,rgba(255,159,67,.15),rgba(255,107,53,.08));">
+          <img src="../assets/gallery/moo.jpg" onerror="this.style.display='none'">🐷
+        </div>
+        <div class="menu-body">
+          <div class="menu-tag tag-popular">⭐ Popular</div>
+          <div class="menu-name">เกี๊ยวยัดไส้หมู</div>
+          <div class="menu-desc">เนื้อหมูสดคัดคุณภาพ ปรุงรสกลมกล่อม ไส้แน่น เคี้ยวได้ทั้งคำ</div>
+          <div class="menu-price-row">
+            <div class="price-block">
+              <div class="plabel">ต้นทุน/ล็อต</div>
+              <div class="pval" style="color:var(--subtext);">250 <span class="punit">บาท</span></div>
+            </div>
+            <div class="price-sep"></div>
+            <div class="price-block">
+              <div class="plabel">ราคาขาย</div>
+              <div class="pval" style="color:var(--green);">10 <span class="punit">บาท/ชิ้น</span></div>
+            </div>
+          </div>
+          <div class="menu-tag tag-fresh" style="margin-top:10px;">🌿 สดใหม่ทุกวัน</div>
+        </div>
+      </div>
+      <div class="menu-card reveal d2">
+        <div class="menu-img" style="background:linear-gradient(135deg,rgba(10,132,255,.12),rgba(94,92,230,.06));">
+          <img src="../assets/gallery/goong.jpg" onerror="this.style.display='none'">🦐
+        </div>
+        <div class="menu-body">
+          <div class="menu-tag tag-popular">⭐ Popular</div>
+          <div class="menu-name">เกี๊ยวยัดไส้กุ้ง</div>
+          <div class="menu-desc">กุ้งสดแท้ 100% เนื้อหวานกรุบ เด้งทุกคำ ไม่ผสมสารเจือปน</div>
+          <div class="menu-price-row">
+            <div class="price-block">
+              <div class="plabel">ต้นทุน/ล็อต</div>
+              <div class="pval" style="color:var(--subtext);">250 <span class="punit">บาท</span></div>
+            </div>
+            <div class="price-sep"></div>
+            <div class="price-block">
+              <div class="plabel">ราคาขาย</div>
+              <div class="pval" style="color:var(--green);">10 <span class="punit">บาท/ชิ้น</span></div>
+            </div>
+          </div>
+          <div class="menu-tag tag-fresh" style="margin-top:10px;">🌿 สดใหม่ทุกวัน</div>
+        </div>
+      </div>
+      <div class="menu-card reveal d3">
+        <div class="menu-img" style="background:linear-gradient(135deg,rgba(255,211,42,.12),rgba(255,159,67,.06));">
+          <img src="../assets/gallery/special.jpg" onerror="this.style.display='none'">🌟
+        </div>
+        <div class="menu-body">
+          <div class="menu-tag tag-special">✨ Special</div>
+          <div class="menu-name">ไส้พิเศษตามเมนู</div>
+          <div class="menu-desc">ไส้พิเศษที่หมุนเวียนตามฤดูกาล รับออเดอร์ล่วงหน้าได้ตามต้องการ</div>
+          <div class="menu-price-row">
+            <div class="price-block">
+              <div class="plabel">ราคาเริ่มต้น</div>
+              <div class="pval" style="color:var(--accent);">15–20 <span class="punit">บาท</span></div>
+            </div>
+          </div>
+          <div class="menu-tag tag-special" style="margin-top:10px;">📱 รับออเดอร์ล่วงหน้า</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- CHANNELS -->
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">ช่องทางจำหน่าย</div><h2 class="sec-title">ซื้อได้ที่ไหน?</h2></div>
+    <div class="channel-grid">
+      <div class="channel-card reveal d1"><div class="ch-icon">🏪</div><div><div class="ch-name">หน้าร้าน</div><div class="ch-desc">ในวิทยาลัยการอาชีพสระบุรี ตึกพาณิชยกรรม</div></div></div>
+      <div class="channel-card reveal d2"><div class="ch-icon">🛵</div><div><div class="ch-name">เดลิเวอรีออนไลน์</div><div class="ch-desc">สั่งออนไลน์ ส่งตรงถึงมือ สะดวกรวดเร็ว</div></div></div>
+      <div class="channel-card reveal d3"><div class="ch-icon">📱</div><div><div class="ch-name">รับออเดอร์ล่วงหน้า</div><div class="ch-desc">สั่งล่วงหน้าผ่าน Facebook Page หรือโทรศัพท์</div></div></div>
+      <div class="channel-card reveal d4"><div class="ch-icon">📘</div><div><div class="ch-name">Facebook Page</div><div class="ch-desc">ติดตามโปรโมชั่นและความเคลื่อนไหวของร้าน</div></div></div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- MARKETING -->
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">การส่งเสริมการขาย</div><h2 class="sec-title">โปรโมชั่นและการตลาด</h2></div>
+    <div class="mktg-grid">
+      <div class="mktg-card reveal d1"><div class="mktg-icon">🎁</div><div class="mktg-name">โปรเปิดตัว</div><div class="mktg-desc">ลดราคาช่วงเปิดร้าน เพื่อดึงดูดลูกค้าใหม่และสร้างการรับรู้</div></div>
+      <div class="mktg-card reveal d2"><div class="mktg-icon">2️⃣</div><div class="mktg-name">ซื้อ 2 แถม 1</div><div class="mktg-desc">โปรโมชั่นพิเศษสำหรับลูกค้าที่ซื้อจำนวนมาก</div></div>
+      <div class="mktg-card reveal d3"><div class="mktg-icon">🍽️</div><div class="mktg-name">แจกตัวอย่าง</div><div class="mktg-desc">แจกตัวอย่างสินค้าเพื่อให้ลูกค้าได้ทดลองชิม</div></div>
+      <div class="mktg-card reveal d4"><div class="mktg-icon">📣</div><div class="mktg-name">โซเชียลมีเดีย</div><div class="mktg-desc">ประชาสัมพันธ์ผ่าน Facebook และเพจร้าน อย่างต่อเนื่อง</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-logo">🥟 เกี๊ยวยัดไส้</div>
+    <div class="foot-sub">Delicious Stuffed Dumplings · วิทยาลัยการอาชีพสระบุรี</div>
+    <div class="foot-nav">
+      <a href="../index.html">หน้าหลัก</a><a href="about.html">เกี่ยวกับ</a><a href="menu.html">เมนู</a>
+      <a href="team.html">ทีมงาน</a><a href="swot.html">SWOT</a><a href="finance.html">การเงิน</a><a href="process.html">การผลิต</a>
+    </div>
+    <div class="foot-copy">แผนธุรกิจนักศึกษา ปวส.1 · สาขาเทคโนโลยีธุรกิจดิจิทัล · ครูที่ปรึกษา ครูนาตยา วงษ์กต</div>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

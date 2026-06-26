@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>การเงิน · เกี๊ยวยัดไส้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+.page-hero-bg{background:radial-gradient(ellipse 70% 80% at 60% 0%,rgba(48,209,88,.16) 0%,transparent 60%);}
+.stat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:36px;}
+.stat-card{background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:28px 22px;text-align:center;transition:transform .3s,border-color .3s;}
+.stat-card:hover{transform:translateY(-4px);border-color:rgba(255,159,67,.28);}
+.stat-num{font-size:2.4rem;font-weight:800;letter-spacing:-.04em;}
+.stat-label{font-size:.78rem;color:var(--subtext);margin-top:4px;}
+.invest-table{width:100%;border-collapse:collapse;margin-top:28px;}
+.invest-table th{text-align:left;padding:10px 16px;font-size:.72rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--subtext);border-bottom:1px solid var(--border);}
+.invest-table td{padding:14px 16px;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.05);}
+.invest-table tr:last-child td{border-bottom:none;font-weight:800;color:var(--accent);}
+.invest-table tr:hover td{background:var(--surface2);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html">🥟 เกี๊ยวยัดไส้</a>
+  <div class="nav-links">
+    <a href="../index.html">หน้าหลัก</a><a href="about.html">เกี่ยวกับ</a>
+    <a href="menu.html">เมนู</a><a href="team.html">ทีมงาน</a>
+    <a href="swot.html">วิเคราะห์</a><a href="finance.html" class="active">การเงิน</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow"><i></i> Finance</div>
+    <h1 class="page-title">แผนการเงิน<br><span class="grad">และการลงทุน</span></h1>
+    <p class="page-sub">เงินทุน ต้นทุน ยอดขาย และประมาณการกำไร — เริ่มต้นได้จริงด้วยงบเพียง 500 บาท</p>
+  </div>
+</div>
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">ภาพรวม</div><h2 class="sec-title">ตัวเลขสำคัญ</h2></div>
+    <div class="stat-grid">
+      <div class="stat-card reveal d1"><div class="stat-num" style="color:var(--accent);">500</div><div class="stat-label">บาท · เงินทุนเริ่มต้น</div></div>
+      <div class="stat-card reveal d2"><div class="stat-num" style="color:var(--green);">700</div><div class="stat-label">บาท/เดือน · เป้ายอดขาย</div></div>
+      <div class="stat-card reveal d3"><div class="stat-num" style="color:var(--blue);">250</div><div class="stat-label">บาท · เงินทุนหมุนเวียน</div></div>
+      <div class="stat-card reveal d4"><div class="stat-num" style="color:#ffd32a;">200</div><div class="stat-label">บาท · เครื่องมืออุปกรณ์</div></div>
+      <div class="stat-card reveal d1"><div class="stat-num" style="color:var(--accent);">100</div><div class="stat-label">บาท · พาหนะ</div></div>
+      <div class="stat-card reveal d2"><div class="stat-num" style="color:var(--green);">100%</div><div class="stat-label">ขายสด · ไม่มีเชื่อ</div></div>
+    </div>
+  </div>
+</section>
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <div class="reveal"><div class="sec-label">รายละเอียด</div><h2 class="sec-title">รายการลงทุน</h2></div>
+    <div class="card reveal" style="margin-top:28px;padding:0;overflow:hidden;">
+      <table class="invest-table">
+        <thead><tr><th>รายการ</th><th style="text-align:right;">จำนวนเงิน (บาท)</th></tr></thead>
+        <tbody>
+          <tr><td>เงินทุนเริ่มต้น</td><td style="text-align:right;">500</td></tr>
+          <tr><td>เงินทุนหมุนเวียน</td><td style="text-align:right;">250</td></tr>
+          <tr><td>เครื่องมือ อุปกรณ์</td><td style="text-align:right;">200</td></tr>
+          <tr><td>พาหนะ</td><td style="text-align:right;">100</td></tr>
+          <tr><td>เงินกู้ยืม</td><td style="text-align:right;">—</td></tr>
+          <tr><td><strong>รวมทั้งหมด</strong></td><td style="text-align:right;"><strong>500 บาท</strong></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="card reveal" style="margin-top:14px;display:flex;gap:20px;flex-wrap:wrap;">
+      <div style="flex:1;min-width:200px;">
+        <div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--subtext);margin-bottom:6px;">ต้นทุนต่อเมนู</div>
+        <div style="font-size:.9rem;color:var(--subtext);">เกี๊ยวหมู ต้นทุน 250฿/ล็อต · ราคาขาย 10฿/ชิ้น</div>
+        <div style="font-size:.9rem;color:var(--subtext);margin-top:4px;">เกี๊ยวกุ้ง ต้นทุน 250฿/ล็อต · ราคาขาย 10฿/ชิ้น</div>
+      </div>
+      <div style="flex:1;min-width:200px;">
+        <div style="font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--subtext);margin-bottom:6px;">แหล่งวัตถุดิบ</div>
+        <div style="font-size:.9rem;color:var(--subtext);">ตลาดสดร้านไก่ · ชำระเงินสด 100%</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-logo">🥟 เกี๊ยวยัดไส้</div>
+    <div class="foot-sub">Delicious Stuffed Dumplings · วิทยาลัยการอาชีพสระบุรี</div>
+    <div class="foot-nav">
+      <a href="../index.html">หน้าหลัก</a><a href="about.html">เกี่ยวกับ</a><a href="menu.html">เมนู</a>
+      <a href="team.html">ทีมงาน</a><a href="swot.html">SWOT</a><a href="finance.html">การเงิน</a><a href="process.html">การผลิต</a>
+    </div>
+    <div class="foot-copy">แผนธุรกิจนักศึกษา ปวส.1 · ครูที่ปรึกษา ครูนาตยา วงษ์กต</div>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

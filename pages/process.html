@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>กระบวนการผลิต · เกี๊ยวยัดไส้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+.page-hero-bg{background:radial-gradient(ellipse 70% 70% at 30% 0%,rgba(255,69,58,.12) 0%,transparent 60%),radial-gradient(ellipse 50% 50% at 90% 70%,rgba(255,159,67,.1) 0%,transparent 55%);}
+
+/* MARQUEE */
+.proc-marquee{overflow:hidden;padding:40px 0;}
+.proc-track{display:flex;gap:14px;width:max-content;}
+.proc-track.r1{animation:marquee 26s linear infinite;}
+.proc-thumb{width:220px;height:160px;border-radius:16px;flex-shrink:0;overflow:hidden;background:var(--surface2);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:2.5rem;position:relative;}
+.proc-thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.proc-thumb .lbl{position:absolute;bottom:8px;left:10px;right:10px;background:rgba(0,0,0,.5);backdrop-filter:blur(6px);font-size:.65rem;font-weight:700;color:rgba(255,255,255,.8);padding:4px 8px;border-radius:6px;text-align:center;}
+
+/* TIMELINE */
+.timeline{margin-top:40px;display:flex;flex-direction:column;}
+.tl-item{display:flex;gap:24px;position:relative;}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:52px;}
+.tl-dot{
+  width:52px;height:52px;border-radius:16px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.3rem;
+  box-shadow:0 8px 24px rgba(255,159,67,.3);
+}
+.tl-line{flex:1;width:2px;background:linear-gradient(to bottom,rgba(255,159,67,.3),rgba(255,159,67,.05));margin:6px auto;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-body{padding:8px 0 36px;flex:1;}
+.tl-step{font-size:.68rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:4px;}
+.tl-title{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;}
+.tl-desc{font-size:.88rem;color:var(--subtext);margin-top:5px;line-height:1.65;}
+
+/* SERVICE STEPS */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px;margin-top:28px;}
+.svc-card{background:var(--surface);border:1px solid var(--border);border-radius:18px;padding:20px;display:flex;gap:14px;align-items:flex-start;transition:transform .25s,border-color .25s;}
+.svc-card:hover{transform:translateY(-3px);border-color:rgba(255,159,67,.25);}
+.svc-num{width:32px;height:32px;border-radius:10px;background:rgba(255,159,67,.15);border:1px solid rgba(255,159,67,.25);display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:800;color:var(--accent);flex-shrink:0;}
+.svc-text{font-size:.88rem;color:var(--subtext);line-height:1.6;padding-top:4px;}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="../index.html">🥟 เกี๊ยวยัดไส้</a>
+  <div class="nav-links">
+    <a href="../index.html">หน้าหลัก</a><a href="about.html">เกี่ยวกับ</a>
+    <a href="menu.html">เมนู</a><a href="team.html">ทีมงาน</a>
+    <a href="swot.html">วิเคราะห์</a><a href="finance.html">การเงิน</a>
+  </div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow"><i></i> Production</div>
+    <h1 class="page-title">กระบวนการ<br><span class="grad">ผลิตสินค้า</span></h1>
+    <p class="page-sub">ทุกขั้นตอนคัดสรรอย่างพิถีพิถัน เพื่อความอร่อย สะอาด และปลอดภัยสูงสุด</p>
+  </div>
+</div>
+<hr class="divider">
+
+<!-- MARQUEE -->
+<div class="proc-marquee">
+  <div class="proc-track r1">
+    <div class="proc-thumb"><img src="../assets/gallery/proc1.jpg" onerror="this.style.display='none'">🛒<div class="lbl">จัดซื้อวัตถุดิบ</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc2.jpg" onerror="this.style.display='none'">🫧<div class="lbl">เตรียมวัตถุดิบ</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc3.jpg" onerror="this.style.display='none'">🧂<div class="lbl">ปรุงรส</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc4.jpg" onerror="this.style.display='none'">🥟<div class="lbl">ห่อเกี๊ยว</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc5.jpg" onerror="this.style.display='none'">🔥<div class="lbl">ปรุงสุก</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc6.jpg" onerror="this.style.display='none'">📦<div class="lbl">บรรจุจำหน่าย</div></div>
+    <!-- ซ้ำ -->
+    <div class="proc-thumb"><img src="../assets/gallery/proc1.jpg" onerror="this.style.display='none'">🛒<div class="lbl">จัดซื้อวัตถุดิบ</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc2.jpg" onerror="this.style.display='none'">🫧<div class="lbl">เตรียมวัตถุดิบ</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc3.jpg" onerror="this.style.display='none'">🧂<div class="lbl">ปรุงรส</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc4.jpg" onerror="this.style.display='none'">🥟<div class="lbl">ห่อเกี๊ยว</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc5.jpg" onerror="this.style.display='none'">🔥<div class="lbl">ปรุงสุก</div></div>
+    <div class="proc-thumb"><img src="../assets/gallery/proc6.jpg" onerror="this.style.display='none'">📦<div class="lbl">บรรจุจำหน่าย</div></div>
+  </div>
+</div>
+<hr class="divider">
+
+<section>
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;">
+      <!-- PRODUCTION -->
+      <div>
+        <div class="reveal"><div class="sec-label">การผลิต</div><h2 class="sec-title">ขั้นตอนผลิตสินค้า</h2></div>
+        <div class="timeline reveal">
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot">🛒</div><div class="tl-line"></div></div>
+            <div class="tl-body"><div class="tl-step">Step 01</div><div class="tl-title">จัดซื้อวัตถุดิบ</div><div class="tl-desc">คัดเลือกวัตถุดิบสดใหม่คุณภาพจากตลาดสด ชำระเงินสด 100%</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot">🫧</div><div class="tl-line"></div></div>
+            <div class="tl-body"><div class="tl-step">Step 02</div><div class="tl-title">เตรียมวัตถุดิบ</div><div class="tl-desc">ล้าง ลอกไขมัน ทำความสะอาดเนื้อสัตว์ตามมาตรฐานสุขอนามัย</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot">🧂</div><div class="tl-line"></div></div>
+            <div class="tl-body"><div class="tl-step">Step 03</div><div class="tl-title">ปรุงรสและเตรียมไส้</div><div class="tl-desc">ผสมเครื่องปรุงสูตรเฉพาะ ให้ได้รสชาติกลมกล่อมเป็นเอกลักษณ์</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot">🥟</div><div class="tl-line"></div></div>
+            <div class="tl-body"><div class="tl-step">Step 04</div><div class="tl-title">ห่อเกี๊ยว</div><div class="tl-desc">ห่ออย่างพิถีพิถัน จัดรูปทรงสวยงามและมาตรฐานทุกชิ้น</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot">🔥</div><div class="tl-line"></div></div>
+            <div class="tl-body"><div class="tl-step">Step 05</div><div class="tl-title">ปรุงสุกตามเมนู</div><div class="tl-desc">ต้ม / นึ่ง / ทอด ตามความต้องการลูกค้า สุกทั่วถึง ปลอดภัย</div></div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-left"><div class="tl-dot">📦</div></div>
+            <div class="tl-body"><div class="tl-step">Step 06</div><div class="tl-title">บรรจุและจำหน่าย</div><div class="tl-desc">บรรจุสะอาดเรียบร้อย พร้อมส่งมอบให้ลูกค้าทันที</div></div>
+          </div>
+        </div>
+      </div>
+      <!-- SERVICE -->
+      <div>
+        <div class="reveal"><div class="sec-label">การบริการ</div><h2 class="sec-title">ขั้นตอนให้บริการ</h2></div>
+        <div class="svc-grid reveal" style="grid-template-columns:1fr;">
+          <div class="svc-card"><div class="svc-num">1</div><div class="svc-text">รับออเดอร์จากลูกค้าหน้าร้านหรือออนไลน์</div></div>
+          <div class="svc-card"><div class="svc-num">2</div><div class="svc-text">จัดเตรียมสินค้าให้ตรงตามความต้องการของลูกค้า</div></div>
+          <div class="svc-card"><div class="svc-num">3</div><div class="svc-text">ส่งมอบสินค้าให้ลูกค้าอย่างรวดเร็วและถูกต้อง</div></div>
+          <div class="svc-card"><div class="svc-num">4</div><div class="svc-text">ให้บริการด้วยความสุภาพ สร้างความพึงพอใจและความประทับใจ</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-logo">🥟 เกี๊ยวยัดไส้</div>
+    <div class="foot-sub">Delicious Stuffed Dumplings · วิทยาลัยการอาชีพสระบุรี</div>
+    <div class="foot-nav">
+      <a href="../index.html">หน้าหลัก</a><a href="about.html">เกี่ยวกับ</a><a href="menu.html">เมนู</a>
+      <a href="team.html">ทีมงาน</a><a href="swot.html">SWOT</a><a href="finance.html">การเงิน</a><a href="process.html">การผลิต</a>
+    </div>
+    <div class="foot-copy">แผนธุรกิจนักศึกษา ปวส.1 · ครูที่ปรึกษา ครูนาตยา วงษ์กต</div>
+  </div>
+</footer>
+<script>
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>

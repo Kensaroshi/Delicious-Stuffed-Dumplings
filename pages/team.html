@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ทีมงาน · เกี๊ยวยัดไส้</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/shared.css">
+<style>
+/* PAGE BG */
+.page-hero-bg{
+  background:
+    radial-gradient(ellipse 70% 100% at 80% 0%,rgba(10,132,255,.18) 0%,transparent 65%),
+    radial-gradient(ellipse 50% 60% at 10% 80%,rgba(255,159,67,.1) 0%,transparent 55%);
+}
+
+/* MARQUEE (team photo strip) */
+.marquee-section{padding:0 0 64px;overflow:hidden;}
+.marquee-track{display:flex;gap:14px;width:max-content;}
+.marquee-track.s1{animation:marquee 24s linear infinite;}
+.marquee-track.s2{animation:marquee 18s linear infinite reverse;margin-top:14px;}
+.marquee-img{
+  width:220px;height:220px;border-radius:18px;object-fit:cover;flex-shrink:0;
+  background:var(--surface2);border:1px solid var(--border);
+  overflow:hidden;position:relative;
+  display:flex;align-items:center;justify-content:center;font-size:3rem;
+}
+.marquee-img img{width:100%;height:100%;object-fit:cover;}
+.marquee-img .lbl{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:8px 12px;
+  background:linear-gradient(to top,rgba(10,10,15,.85),transparent);
+  font-size:.68rem;font-weight:700;color:rgba(255,255,255,.8);
+}
+
+/* TEAM CARDS */
+.team-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;margin-top:40px;
+}
+.team-card{
+  background:var(--surface);border:1px solid var(--border);border-radius:24px;
+  overflow:hidden;
+  transition:transform .35s cubic-bezier(.22,1,.36,1),border-color .3s,box-shadow .3s;
+}
+.team-card:hover{
+  transform:translateY(-6px);
+  border-color:rgba(255,159,67,.3);
+  box-shadow:0 24px 60px rgba(0,0,0,.4);
+}
+
+/* 1:1 PHOTO */
+.team-photo-wrap{
+  position:relative;width:100%;padding-top:100%;/* 1:1 ratio */
+  overflow:hidden;background:var(--surface2);
+}
+.team-photo-wrap img{
+  position:absolute;inset:0;width:100%;height:100%;object-fit:cover;
+  transition:transform .5s cubic-bezier(.22,1,.36,1);
+}
+.team-card:hover .team-photo-wrap img{transform:scale(1.05);}
+.team-photo-placeholder{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:10px;
+}
+.team-photo-placeholder .avatar-emoji{
+  font-size:3.8rem;
+  filter:drop-shadow(0 8px 20px rgba(0,0,0,.4));
+}
+.team-photo-placeholder .ph-text{
+  font-size:.7rem;font-weight:600;color:var(--subtext);letter-spacing:.05em;
+}
+/* gradient overlay on photo */
+.team-photo-overlay{
+  position:absolute;bottom:0;left:0;right:0;height:60%;
+  background:linear-gradient(to top,rgba(10,10,15,.75) 0%,transparent 100%);
+  pointer-events:none;
+}
+/* role pill on image */
+.team-role-pill{
+  position:absolute;top:14px;left:14px;
+  padding:5px 12px;border-radius:100px;
+  font-size:.65rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
+  backdrop-filter:blur(8px);
+}
+.role-owner{background:rgba(255,159,67,.25);color:var(--accent);border:1px solid rgba(255,159,67,.35);}
+.role-finance{background:rgba(48,209,88,.2);color:var(--green);border:1px solid rgba(48,209,88,.3);}
+.role-service{background:rgba(10,132,255,.2);color:var(--blue);border:1px solid rgba(10,132,255,.3);}
+
+/* CARD INFO */
+.team-info{padding:22px 24px 26px;}
+.team-name{font-size:1.05rem;font-weight:800;letter-spacing:-.02em;}
+.team-title{font-size:.78rem;color:var(--subtext);margin-top:3px;font-weight:500;}
+.team-divider{border:none;border-top:1px solid var(--border);margin:16px 0;}
+.team-detail{display:flex;flex-direction:column;gap:8px;}
+.detail-row{display:flex;gap:10px;font-size:.82rem;}
+.detail-icon{width:20px;flex-shrink:0;text-align:center;}
+.detail-text{color:var(--subtext);}
+.detail-text strong{color:var(--text);font-weight:600;}
+
+/* ADVISOR */
+.advisor-card{
+  background:linear-gradient(135deg,rgba(255,159,67,.08),rgba(255,107,53,.04));
+  border:1px solid rgba(255,159,67,.2);
+  border-radius:24px;padding:32px;margin-top:20px;
+  display:flex;gap:28px;align-items:center;flex-wrap:wrap;
+}
+.advisor-photo-wrap{
+  width:120px;height:120px;border-radius:50%;flex-shrink:0;
+  background:var(--surface2);border:2px solid rgba(255,159,67,.3);
+  overflow:hidden;position:relative;display:flex;align-items:center;justify-content:center;
+  font-size:3rem;
+}
+.advisor-photo-wrap img{width:100%;height:100%;object-fit:cover;}
+.advisor-info{flex:1;}
+.advisor-eyebrow{font-size:.68rem;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px;}
+.advisor-name{font-size:1.4rem;font-weight:800;letter-spacing:-.02em;}
+.advisor-role{color:var(--subtext);font-size:.88rem;margin-top:4px;}
+.advisor-school{color:var(--subtext);font-size:.82rem;margin-top:2px;}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="../index.html">🥟 เกี๊ยวยัดไส้</a>
+  <div class="nav-links">
+    <a href="../index.html">หน้าหลัก</a>
+    <a href="about.html">เกี่ยวกับ</a>
+    <a href="menu.html">เมนู</a>
+    <a href="team.html" class="active">ทีมงาน</a>
+    <a href="swot.html">วิเคราะห์</a>
+    <a href="finance.html">การเงิน</a>
+  </div>
+</nav>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="page-hero-bg"></div>
+  <div class="page-hero-inner">
+    <div class="page-eyebrow"><i></i> Team</div>
+    <h1 class="page-title">ทีมงาน<br><span class="grad">ผู้ร่วมประกอบธุรกิจ</span></h1>
+    <p class="page-sub">นักศึกษา ปวส.1 สาขาเทคโนโลยีธุรกิจดิจิทัล สาขางานอุตสาหกรรม — 5 คนที่ร่วมฝันและลงมือสร้างสิ่งที่มีคุณค่า</p>
+  </div>
+</div>
+
+<!-- MARQUEE (ภาพทีม) -->
+<div class="marquee-section">
+  <div style="overflow:hidden;">
+    <div class="marquee-track s1">
+      <div class="marquee-img"><img src="../assets/team/krisana.jpg" onerror="this.style.display='none'">👑<div class="lbl">กฤษณะ มะณีกลัด</div></div>
+      <div class="marquee-img"><img src="../assets/team/phirakorn.jpg" onerror="this.style.display='none'">🔵<div class="lbl">พีรกร กฤชพรรษ</div></div>
+      <div class="marquee-img"><img src="../assets/team/noppodol.jpg" onerror="this.style.display='none'">⚙️<div class="lbl">นพดล กสิวัฒน์</div></div>
+      <div class="marquee-img"><img src="../assets/team/khattiya.jpg" onerror="this.style.display='none'">📊<div class="lbl">ขัตติญา ศรีเหลา</div></div>
+      <div class="marquee-img"><img src="../assets/team/sarunya.jpg" onerror="this.style.display='none'">📋<div class="lbl">ศรัญญา พรมหนู</div></div>
+      <!-- ซ้ำ -->
+      <div class="marquee-img"><img src="../assets/team/krisana.jpg" onerror="this.style.display='none'">👑<div class="lbl">กฤษณะ มะณีกลัด</div></div>
+      <div class="marquee-img"><img src="../assets/team/phirakorn.jpg" onerror="this.style.display='none'">🔵<div class="lbl">พีรกร กฤชพรรษ</div></div>
+      <div class="marquee-img"><img src="../assets/team/noppodol.jpg" onerror="this.style.display='none'">⚙️<div class="lbl">นพดล กสิวัฒน์</div></div>
+      <div class="marquee-img"><img src="../assets/team/khattiya.jpg" onerror="this.style.display='none'">📊<div class="lbl">ขัตติญา ศรีเหลา</div></div>
+      <div class="marquee-img"><img src="../assets/team/sarunya.jpg" onerror="this.style.display='none'">📋<div class="lbl">ศรัญญา พรมหนู</div></div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TEAM SECTION -->
+<section>
+  <div class="container">
+    <div class="reveal">
+      <div class="sec-label">ผู้ร่วมประกอบธุรกิจ</div>
+      <h2 class="sec-title">รู้จักทีมของเรา</h2>
+      <p class="sec-sub">ทั้ง 5 คนรับผิดชอบคนละด้าน เพื่อให้ธุรกิจดำเนินได้อย่างมีประสิทธิภาพ</p>
+    </div>
+
+    <div class="team-grid">
+
+      <!-- 1. กฤษณะ - เจ้าของ -->
+      <div class="team-card reveal d1">
+        <div class="team-photo-wrap">
+          <!-- วางไฟล์รูป 1:1 ที่ assets/team/krisana.jpg -->
+          <img src="../assets/team/krisana.jpg" alt="นาย กฤษณะ มะณีกลัด" onerror="this.style.display='none'">
+          <div class="team-photo-placeholder">
+            <div class="avatar-emoji">👑</div>
+            <div class="ph-text">วางรูปที่ assets/team/krisana.jpg</div>
+          </div>
+          <div class="team-photo-overlay"></div>
+          <div class="team-role-pill role-owner">เจ้าของธุรกิจ</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">นาย กฤษณะ มะณีกลัด</div>
+          <div class="team-title">Krisana Maneeklat · หัวหน้าทีม</div>
+          <div class="team-divider"></div>
+          <div class="team-detail">
+            <div class="detail-row">
+              <span class="detail-icon">🏫</span>
+              <span class="detail-text">ปวส.1 เทคโนโลยีธุรกิจดิจิทัล</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">📱</span>
+              <span class="detail-text">061-467-2719</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">📧</span>
+              <span class="detail-text" style="word-break:break-all;">69319100002@sic.ac.th</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">🆔</span>
+              <span class="detail-text">1199600452722</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. พีรกร - ให้บริการ -->
+      <div class="team-card reveal d2">
+        <div class="team-photo-wrap">
+          <img src="../assets/team/phirakorn.jpg" alt="นาย พีรกร กฤชพรรษ" onerror="this.style.display='none'">
+          <div class="team-photo-placeholder">
+            <div class="avatar-emoji">🔵</div>
+            <div class="ph-text">วางรูปที่ assets/team/phirakorn.jpg</div>
+          </div>
+          <div class="team-photo-overlay"></div>
+          <div class="team-role-pill role-service">ฝ่ายให้บริการ</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">นาย พีรกร กฤชพรรษ</div>
+          <div class="team-title">Phirakorn Kridchaphat · Service</div>
+          <div class="team-divider"></div>
+          <div class="team-detail">
+            <div class="detail-row">
+              <span class="detail-icon">🏫</span>
+              <span class="detail-text">ปวส.1 เทคโนโลยีธุรกิจดิจิทัล</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">🎯</span>
+              <span class="detail-text">รับออเดอร์ ส่งมอบสินค้า ดูแลลูกค้า</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. นพดล - ให้บริการ -->
+      <div class="team-card reveal d3">
+        <div class="team-photo-wrap">
+          <img src="../assets/team/noppodol.jpg" alt="นาย นพดล กสิวัฒน์" onerror="this.style.display='none'">
+          <div class="team-photo-placeholder">
+            <div class="avatar-emoji">⚙️</div>
+            <div class="ph-text">วางรูปที่ assets/team/noppodol.jpg</div>
+          </div>
+          <div class="team-photo-overlay"></div>
+          <div class="team-role-pill role-service">ฝ่ายให้บริการ</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">นาย นพดล กสิวัฒน์</div>
+          <div class="team-title">Noppadon Kasiwat · Service</div>
+          <div class="team-divider"></div>
+          <div class="team-detail">
+            <div class="detail-row">
+              <span class="detail-icon">🏫</span>
+              <span class="detail-text">ปวส.1 เทคโนโลยีธุรกิจดิจิทัล</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">🎯</span>
+              <span class="detail-text">รับออเดอร์ ส่งมอบสินค้า ดูแลลูกค้า</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. ขัตติญา - บัญชี -->
+      <div class="team-card reveal d1">
+        <div class="team-photo-wrap">
+          <img src="../assets/team/khattiya.jpg" alt="นางสาว ขัตติญา ศรีเหลา" onerror="this.style.display='none'">
+          <div class="team-photo-placeholder">
+            <div class="avatar-emoji">📊</div>
+            <div class="ph-text">วางรูปที่ assets/team/khattiya.jpg</div>
+          </div>
+          <div class="team-photo-overlay"></div>
+          <div class="team-role-pill role-finance">ฝ่ายบัญชี</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">นางสาว ขัตติญา ศรีเหลา</div>
+          <div class="team-title">Khattiya Srilao · Finance</div>
+          <div class="team-divider"></div>
+          <div class="team-detail">
+            <div class="detail-row">
+              <span class="detail-icon">🏫</span>
+              <span class="detail-text">ปวส.1 เทคโนโลยีธุรกิจดิจิทัล</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">🎯</span>
+              <span class="detail-text">จัดการบัญชี รับ-รายจ่าย บันทึกการเงิน</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. ศรัญญา - บัญชี -->
+      <div class="team-card reveal d2">
+        <div class="team-photo-wrap">
+          <img src="../assets/team/sarunya.jpg" alt="นางสาว ศรัญญา พรมหนู" onerror="this.style.display='none'">
+          <div class="team-photo-placeholder">
+            <div class="avatar-emoji">📋</div>
+            <div class="ph-text">วางรูปที่ assets/team/sarunya.jpg</div>
+          </div>
+          <div class="team-photo-overlay"></div>
+          <div class="team-role-pill role-finance">ฝ่ายบัญชี</div>
+        </div>
+        <div class="team-info">
+          <div class="team-name">นางสาว ศรัญญา พรมหนู</div>
+          <div class="team-title">Sarunya Phromnu · Finance</div>
+          <div class="team-divider"></div>
+          <div class="team-detail">
+            <div class="detail-row">
+              <span class="detail-icon">🏫</span>
+              <span class="detail-text">ปวส.1 เทคโนโลยีธุรกิจดิจิทัล</span>
+            </div>
+            <div class="detail-row">
+              <span class="detail-icon">🎯</span>
+              <span class="detail-text">จัดการบัญชี รับ-รายจ่าย บันทึกการเงิน</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end team-grid -->
+
+    <!-- ADVISOR -->
+    <div class="reveal" style="margin-top:40px;">
+      <div class="sec-label">ครูที่ปรึกษา</div>
+      <div class="advisor-card">
+        <div class="advisor-photo-wrap">
+          <!-- วางรูปครูที่ assets/team/advisor.jpg -->
+          <img src="../assets/team/advisor.jpg" alt="ครูนาตยา วงษ์กต" onerror="this.style.display='none'">
+          👩‍🏫
+        </div>
+        <div class="advisor-info">
+          <div class="advisor-eyebrow">🎓 ครูที่ปรึกษาโครงการ</div>
+          <div class="advisor-name">ครูนาตยา วงษ์กต</div>
+          <div class="advisor-role">ครูประจำแผนกวิชา เทคโนโลยีธุรกิจดิจิทัล</div>
+          <div class="advisor-school">วิทยาลัยการอาชีพสระบุรี · สำนักงานคณะกรรมการการอาชีวศึกษา</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-logo">🥟 เกี๊ยวยัดไส้</div>
+    <div class="foot-sub">Delicious Stuffed Dumplings · วิทยาลัยการอาชีพสระบุรี</div>
+    <div class="foot-nav">
+      <a href="../index.html">หน้าหลัก</a>
+      <a href="about.html">เกี่ยวกับ</a>
+      <a href="menu.html">เมนู</a>
+      <a href="team.html">ทีมงาน</a>
+      <a href="swot.html">SWOT</a>
+      <a href="finance.html">การเงิน</a>
+      <a href="process.html">การผลิต</a>
+    </div>
+    <div class="foot-copy">แผนธุรกิจนักศึกษา ปวส.1 · สาขาเทคโนโลยีธุรกิจดิจิทัล · ครูที่ปรึกษา ครูนาตยา วงษ์กต</div>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es => es.forEach(e => {
+  if(e.isIntersecting){e.target.classList.add('v');obs.unobserve(e.target);}
+}),{threshold:.08});
+document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
